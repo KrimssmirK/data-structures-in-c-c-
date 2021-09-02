@@ -1,0 +1,7 @@
+1. What are the practical uses of each decision - making process?
+    It is used to change the flow or sequence of algorithms.
+2. What is a namespace?
+    Namespace allows us to group named entities that otherwise would have global scope
+    into narrower scoped, giving them namespace scope.
+3. Can a program be compiled without main() function?
+    No, it can't.
