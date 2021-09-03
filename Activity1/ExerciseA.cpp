@@ -11,7 +11,7 @@ double getAverage(int scores[]){
     for(int i = 0 ; i < NO_OF_QUIZZES; i++){
         total += scores[i];
     }
-    double average = static_cast<double>(total / NO_OF_QUIZZES);
+    double average = static_cast<double>(total) / NO_OF_QUIZZES;
     return average;
 }
 
@@ -28,9 +28,11 @@ int main(){
         cout << "Student " << (i + 1) << ": ";
         cin >> scores[i];
     }
-    cout << "The average is: " << getAverage(scores) << endl << endl;
+    double average = getAverage(scores);
+    cout << "The average is: " << average << endl << endl;
     for(int i = 0; i < NO_OF_QUIZZES; i++){
-        cout << "Student " << (i + 1) << " -> " << showStatus(scores[i]) << endl;
+        
+        cout << "Student " << (i + 1) << " -> " << showStatus(scores[i]) << "(" << scores[i] << ")" << endl;
     }
     cout << "The passing score is: " << PASSING_SCORE << endl;
     return 0;
