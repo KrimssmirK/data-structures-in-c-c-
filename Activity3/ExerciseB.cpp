@@ -88,6 +88,7 @@ class Queue{
 int main(){
     Queue queue(5);
     
+    queue.enQueue(2);
     
     return 0;
 }
