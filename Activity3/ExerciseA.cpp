@@ -79,13 +79,14 @@ int main(){
     int entered = 0;
     int count = 0;
 
-    while(entered != 999){
+    while(true){
         cout << "Enter a number: ";
         cin >> entered;
-        if(entered != 999){
-            stack.push(entered);
-            count++;
+        if(entered == 999){
+            break;
         }
+        stack.push(entered);
+        count++;
     }
     
     int enteredNums[count];
@@ -105,7 +106,7 @@ int main(){
     }
     
     cout << endl;
-    cout << "AVERAGE: " << total / count << endl;
+    cout << "AVERAGE: " << (double)total / count << endl;
 
     return -1;
 }
