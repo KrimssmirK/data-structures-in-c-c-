@@ -6,7 +6,7 @@ using namespace std;
 const int NO_OF_QUIZZES = 5;
 const int PASSING_SCORE = 80;
 
-double getAverage(int scores[]){
+double getAverage(double scores[]){
     int total = 0;
     for(int i = 0 ; i < NO_OF_QUIZZES; i++){
         total += scores[i];
@@ -23,7 +23,8 @@ string showStatus(int score){
 }
 
 int main(){
-    int scores[NO_OF_QUIZZES];
+    double scores[NO_OF_QUIZZES];
+    cout << "Enter the scores of the Students\n";
     for(int i = 0; i < NO_OF_QUIZZES; i++){
         cout << "Student " << (i + 1) << ": ";
         cin >> scores[i];
