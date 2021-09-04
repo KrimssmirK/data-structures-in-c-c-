@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-    double x = 10.0/3;
-    cout << x << endl;
-    return 0;
+    char consonants[] = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
+    cout << sizeof(consonants)/sizeof(char) << endl;
+
 }

@@ -2,22 +2,33 @@
 
 using namespace std;
 
-void getScoreAndShowAverage(int *p_score, int *p_total, int *p_count, double *p_average){
-        (*p_count)++;
-        cout << "score: ";
-        cin >> *p_score;
-        *p_total += *p_score;
-        *p_average = static_cast<double>(*p_total) / *p_count;
-        cout << "Running Average is: " << *p_average << endl;
+double getGPA(int score){
+    if(score >= 96){
+        return 4.00;
+    }else if(score >= 90){
+        return 3.50;
+    }else if(score >= 84){
+        return 3.00;
+    }else if(score >= 78){
+        return 2.50;
+    }else if(score >= 72){
+        return 2.00;
+    }else if(score >= 66){
+        return 1.50;
+    }else if(score >= 60){
+        return 1.00;
+    }else{
+        return 0.00;
+    }
 }
 
 int main(){
     int score;
-    int running_total = 0;
-    int count = 0;
-    double running_average;
+   
     while(true){
-        getScoreAndShowAverage(&score, &running_total, &count, &running_average);
+        cout << "score: ";
+        cin >> score;
+        cout << "GPA: " << getGPA(score) << endl;
     }
     return 0;
 }
