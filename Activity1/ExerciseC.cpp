@@ -8,7 +8,11 @@ void getNoOfConsonantsAndVowelsAndSpaces(string input, int *vowels, int *consona
         char current_character = input[i];
         if(current_character == 'a' || current_character == 'e' || current_character == 'i' || current_character == 'o' || current_character == 'u'){
             (*vowels)++;
-        }else if(current_character == ' '){
+        }
+        else if(current_character == 'A' || current_character == 'E' || current_character == 'I' || current_character == 'O' || current_character == 'U'){
+            (*vowels)++;
+        }        
+        else if(current_character == ' '){
             (*spaces)++;
         }else{
             (*consonants)++;
@@ -54,6 +58,7 @@ int main(){
     int no_of_consonants;
     int no_of_vowels;
     int no_of_spaces;
+    
 
     cout << "Enter characters: ";
     getline(cin, input);
