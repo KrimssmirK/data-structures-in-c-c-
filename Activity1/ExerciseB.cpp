@@ -23,10 +23,9 @@ double getGPA(int score){
 }
 
 int main(){
-    int score;
-   
+    int score;    
     while(true){
-        cout << "score: ";
+        cout << "Enter Score: ";
         cin >> score;
         cout << "GPA: " << getGPA(score) << endl;
     }
