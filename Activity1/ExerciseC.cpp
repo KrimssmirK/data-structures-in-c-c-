@@ -5,6 +5,16 @@
 using namespace std;
 
 
+bool isVowel(char c){
+    char vowels[] = {'a', 'e', 'i', 'o', 'u'};
+    for(int i = 0; i < sizeof(vowels)/sizeof(char); i++){
+        if(vowels[i] == c){
+            return true;
+        }
+    }
+    return false;
+}
+
 bool isConsonant(char c){
     char consonants[] = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
     for(int i = 0; i < sizeof(consonants)/sizeof(char); i++){
