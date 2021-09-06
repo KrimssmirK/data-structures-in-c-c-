@@ -26,7 +26,13 @@ int main(){
     int score;    
     while(true){
         cout << "Enter Score: ";
-        cin >> score;
+        cin >> score;  
+        if(cin.fail()){
+            cin.clear();
+            cin.ignore();
+            cout << "Oops! only numbers are allowed.." << endl;
+            continue;
+        }
         cout << "GPA: " << getGPA(score) << endl;
     }
     return 0;
