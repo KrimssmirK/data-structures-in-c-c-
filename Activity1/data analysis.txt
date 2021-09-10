@@ -5,4 +5,4 @@
     into narrower scoped, giving them namespace scope. We do not want to write the same code over and over again, because
     it can cause collision to the code.
 3. Can a program be compiled without main() function?
-    No, it can't since main() function serves as an entry or starting point of the program.
+    No, it can't since main() function serves as an entry or starting point of the program
