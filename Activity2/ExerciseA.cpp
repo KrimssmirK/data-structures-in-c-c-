@@ -6,7 +6,7 @@ const int SIZE_OF_ARRAY = 5;
 
 int* MyFunction(int *ptr){
     cout << "address of 1st element: " << ptr << endl;
-    int *address_fifth_element = ptr + SIZE_OF_ARRAY - 1;
+    int *address_fifth_element = ptr + 4;
     return address_fifth_element;
 }
 

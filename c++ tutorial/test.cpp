@@ -3,8 +3,16 @@
 
 using namespace std;
 
-int main(){
-    char consonants[] = {'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'};
-    cout << sizeof(consonants)/sizeof(char) << endl;
+int* MyFunction(int *p){
+    cout << "The address of 1st element in the Array -> " << p << endl;
+    return p + 4;
+}
 
+int main(){
+    //declare array;
+    int A[5];
+    //declare pointer to get the address of 5th element in the A
+    int *q;
+    q = MyFunction(A);
+    cout << "The address of 5th element in the Array -> " << q << endl;
 }
