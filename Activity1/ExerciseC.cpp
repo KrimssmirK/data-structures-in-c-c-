@@ -24,7 +24,7 @@ bool isConsonant(char c){
     return false;
 }
 
-void getNoOfConsonantsAndVowelsAndSpaces(string input, int *vowels, int *consonants, int *spaces){
+void getNoOfConsonantsAndVowelsAndSpaces(string input, int* vowels, int* consonants, int* spaces){
     for(int i = 0 ; i < input.length(); i++){
         char current_character = tolower(input[i]);
         if(isVowel(current_character)){

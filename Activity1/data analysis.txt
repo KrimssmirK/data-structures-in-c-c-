@@ -2,6 +2,7 @@
     It is used to change the flow or sequence of algorithms.
 2. What is a namespace?
     Namespace allows us to group named entities that otherwise would have global scope
-    into narrower scoped, giving them namespace scope.
+    into narrower scoped, giving them namespace scope. We do not want to write the same code over and over again, because
+    it can cause collision to the code.
 3. Can a program be compiled without main() function?
-    No, it can't.
+    No, it can't since main() function serves as an entry or starting point of the program.

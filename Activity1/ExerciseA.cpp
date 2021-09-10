@@ -26,7 +26,7 @@ int main(){
     double scores[NO_OF_QUIZZES];
     cout << "Enter the scores of the Students\n";
     for(int i = 0; i < NO_OF_QUIZZES; i++){
-        cout << "Student " << (i + 1) << ": ";
+        cout << "Student " << i << ": ";
         cin >> scores[i];
     }
     double average = getAverage(scores);
