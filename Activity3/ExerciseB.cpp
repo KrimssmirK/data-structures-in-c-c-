@@ -18,6 +18,7 @@ class Queue{
             for(int i = 0 ; i < prevLength; i++){
                 *(temp + i) = *(p_queue + i);
             }
+            free(p_queue);
             p_queue = temp;
         }
     
@@ -25,8 +26,7 @@ class Queue{
 
         Queue(int l){
             length = l;
-            int *temp = (int*)malloc(l * sizeof(int));
-            p_queue = temp;
+            p_queue = (int*)malloc(l * sizeof(int));
             head = 0;
             tail = 0;
         }
