@@ -22,7 +22,6 @@ class Stack{
         void push(int num){
             idx++;
             if(isFull()){
-                // extendArray();
                 int doubledLength = 2*length*sizeof(int);
                 p_stack = (int*)realloc(p_stack, doubledLength);
                 length = doubledLength;
