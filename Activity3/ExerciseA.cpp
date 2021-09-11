@@ -2,7 +2,6 @@
 
 using namespace std;
 
-
 //implemented using array
 class Stack{
     private:
@@ -11,22 +10,11 @@ class Stack{
         int length;
         int idx;
 
-        //methods
-        void extendArray(){
-            int prevLength = length;
-            length = length * 2;
-            int *temp = (int*)malloc(length * sizeof(int));
-            for(int i = 0; i < prevLength; i++){
-                *(temp + i) = *(p_stack + i);
-            }
-            p_stack = temp;
-        }
     public:
         //constructor
         Stack(int l){
             length = l;
-            int *temp = (int*)malloc(length * sizeof(int)); // allocating array in the memory
-            p_stack = temp;
+            p_stack = (int*)malloc(length * sizeof(int)); // allocating array in the memory
             idx = -1;
         }
         
@@ -34,11 +22,12 @@ class Stack{
         void push(int num){
             idx++;
             if(isFull()){
-                extendArray();
+                // extendArray();
+                int doubledLength = 2*length*sizeof(int);
+                p_stack = (int*)realloc(p_stack, doubledLength);
+                length = doubledLength;
             }
-            
             *(p_stack + idx) = num;
-            
         }
 
         int pop(){
@@ -89,24 +78,24 @@ int main(){
         count++;
     }
     
-    int enteredNums[count];
+    Stack orderedStack(count);
 
-    //storing the elements in order to the new array which is enteredNums
-    for(int i = count - 1; i >= 0; i--){
-        enteredNums[i] = stack.pop();
+    while(!stack.isEmpty()){
+        orderedStack.push(stack.pop());
     }
 
     cout << "Numbers in STACK: ";
 
     int total = 0;
 
-    for(int i = 0; i < count; i++){
-        cout << enteredNums[i] << " ";
-        total += enteredNums[i];
+    while(!orderedStack.isEmpty()){
+        int n = orderedStack.pop();
+        cout << n << " ";
+        total += n;
     }
     
     cout << endl;
     cout << "AVERAGE: " << (double)total / count << endl;
 
-    return -1;
+    return 0;
 }
