@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
@@ -22,9 +23,8 @@ class Stack{
         void push(int num){
             idx++;
             if(isFull()){
-                int doubledLength = 2*length*sizeof(int);
-                p_stack = (int*)realloc(p_stack, doubledLength);
-                length = doubledLength;
+                length *= 2;
+                p_stack = (int*)realloc(p_stack, length*sizeof(int));
             }
             *(p_stack + idx) = num;
         }

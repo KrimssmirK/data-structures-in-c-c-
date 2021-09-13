@@ -1,8 +1,9 @@
 #include <iostream>
+#include <cstdlib>
 
 using namespace std;
 
-
+const int SIZE = 5;
 //implemented using array
 class Queue{
     private: 
@@ -11,56 +12,53 @@ class Queue{
         int head;
         int tail;
 
-        void extendArray(){
-            int prevLength = length;
-            length = length * 2;
-            int *temp = (int*)malloc(length * sizeof(int));
-            for(int i = 0 ; i < prevLength; i++){
-                *(temp + i) = *(p_queue + i);
-            }
-            free(p_queue);
-            p_queue = temp;
+        void reset_head_tail(){
+            head = -1;
+            tail = -1;
         }
-    
+
     public:
 
         Queue(int l){
             length = l;
             p_queue = (int*)malloc(l * sizeof(int));
-            head = 0;
-            tail = 0;
+            head = -1;
+            tail = -1;
         }
 
         void enQueue(int num){
             if(isFull()){
-                extendArray();
+                length *= 2;
+                p_queue = (int*)realloc(p_queue, length*sizeof(int));
             }
-           
-            *(p_queue + (tail % length)) = num;
-            
+            if(isEmpty()){
+                head++;
+            }
             tail++;
-            
+            *(p_queue + (tail % length)) = num;
         }
 
         int deQueue(){
             if(isEmpty()){
                 return -1;
             }
-            int queued = *(p_queue + (head % length));
+            int deQueued = *(p_queue + (head % length));
             head++;
-            return queued;
-
+            if(head > tail){
+                reset_head_tail();
+            }
+            return deQueued;
         }
 
         int peek(){
             if(isEmpty()){
                 return -1;
             }
-            return *(p_queue + head);
+            return *(p_queue + (head % length));
         }
 
         bool isEmpty(){
-            if((head - tail) == 0){
+            if(head == -1){
                 return true;
             }
             return false;
@@ -74,50 +72,23 @@ class Queue{
         }
 
         int getLength(){
-            return tail - head;
+            return (tail - head) + 1;
         }
 
-        int search(int search_num){
-            int currentNum;
+        int getPosition(int search_num){
             for(int i = 0; i < getLength(); i++){
-                currentNum = *(p_queue + ((head + i) % length));
-                if(currentNum == search_num){
+                if(*(p_queue+((head+i)%length)) == search_num){
                     return i + 1;
                 }
             }
             return -1;
         }
-       
-       int getNum(int position){
-           int idx = position;
-           return *(p_queue + ((head + idx) % length));
-       }
 };
 
-void showNewContentAndAverage(Queue queue, int position){
-    int currentNum;
-    int total = 0;
-    int count = 0;
-    cout << "New Queue Content: ";
-    for(int i = 0 ; i < queue.getLength() ; i++){
-        currentNum = queue.getNum(i);
-        
-        if(currentNum == queue.getNum(position - 1)){
-            continue;
-        }
-        cout << currentNum << " ";
-        total += currentNum;
-        count++;
-    }
-    cout << endl;
-
-    cout << "AVERAGE: " << double(total) / count << endl;
-}
-
 int main(){
-    Queue queue(5);
+    Queue queue(SIZE);
     
-    int num = 0;
+    int num;
 
     while(true){
         cout << "Enter a number: ";
@@ -128,14 +99,34 @@ int main(){
         queue.enQueue(num);
     }
 
-    int search_num;
+    int searched;
     cout << "Enter a number to be searched: ";
-    cin >> search_num;
+    cin >> searched;
 
-    int position = queue.search(search_num);
-    cout << "The position of " << search_num << " is " << position << "." << endl;
-
-    showNewContentAndAverage(queue, position);
+    int pos = queue.getPosition(searched);
     
+    cout << "The position of " << searched << " is " << pos << "." << endl;
+
+    Queue newQueue(queue.getLength());
+
+    int count = 1;
+    while(!queue.isEmpty()){
+        if(count == pos){
+            queue.deQueue();
+        }
+        newQueue.enQueue(queue.deQueue());
+        count++;
+    }
+
+    cout << "New Queue Content: ";
+    int total = 0;
+    while(!newQueue.isEmpty()){
+        int dequeued = newQueue.deQueue();
+        cout << dequeued << " ";
+        total += dequeued;
+    }
+    cout << endl;
+
+    cout << "AVERAGE: " << (double)total / (count - 1) << endl;
     return 0;
 }
