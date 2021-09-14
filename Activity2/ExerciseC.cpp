@@ -20,15 +20,15 @@ struct Group{
 
 void createGroup(Group *ptr){
     for(int i = 0 ; i < NO_MEMBERS ; i++){
-        cout << "Student" << i + 1 << endl;
+        cout << "[Student" << i + 1 << "]" << endl;
         cout << "student no: ";
         cin >> ptr[i].student_no;
         cout << "program: ";
         cin >> ptr[i].program;
         cout << "number: ";
         cin >> ptr[i].number;
-        cout << endl;
     }
+    cout << endl;
 }
 
 bool isSame(char *c1, const char *c2){
@@ -57,11 +57,11 @@ string getAddress(char *student_no){
 void displayMemberInfo(Group *ptr){
     cout << "Group1[MEMBERS]" << endl;
     for(int i = 0 ; i < NO_MEMBERS ; i++){
-        cout << "Student" << i + 1 << endl;
+        cout << "[Student" << i + 1 << "]" << endl;
         cout << "student no: " << ptr[i].student_no << endl;
         cout << "program: " << ptr[i].program << endl;
         cout << "number: " << ptr[i].number << endl;
-        cout << "address: " << getAddress(ptr[i].student_no) << endl << endl;
+        cout << "address: " << getAddress(ptr[i].student_no) << endl;
     }
 }
 
