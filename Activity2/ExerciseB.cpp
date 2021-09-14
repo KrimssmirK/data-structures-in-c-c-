@@ -13,7 +13,7 @@ bool hasSeen(char c, char *ptr_c){
     return false;
 }
 
-void showNoOfAppearances(char *c, int size){
+void showNoOfAppearances(char *c, int size, bool (*hasSeen)(char, char*)){
     cout << "Number of appearances" << endl;
     char seen[size + 1];
     for(int i = 0 ; i < size ; i++){
@@ -37,7 +37,7 @@ void showNoOfAppearances(char *c, int size){
     
 }
 
-void showIndices(char *c, int size){
+void showIndices(char *c, int size, bool (*hasSeen)(char, char*)){
     cout << "Indices of the character" << endl;
     char seen[size + 1];
     for(int i = 0 ; i < size ; i++){
@@ -62,7 +62,7 @@ void showIndices(char *c, int size){
 
 
 
-void showAddress(char *c, int size){
+void showAddress(char *c, int size, bool (*hasSeen)(char, char*)){
     cout << "Addresses of the character" << endl;
     char seen[size + 1];
     for(int i = 0; i < size; i++){
@@ -90,11 +90,13 @@ int main(){
     cout << "Enter characters: ";
     getline(cin, input);
 
-    showNoOfAppearances(&input[0], input.length());
-    
-    showIndices(&input[0], input.length());
+  
 
-    showAddress(&input[0], input.length());
+    showNoOfAppearances(&input[0], input.length(), hasSeen);
+    
+    showIndices(&input[0], input.length(), hasSeen);
+
+    showAddress(&input[0], input.length(), hasSeen);
     
     return 0;
 }
