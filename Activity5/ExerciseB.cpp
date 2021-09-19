@@ -13,17 +13,19 @@ void Swap(int i, int j, string *lastNames){
 
 }
 
-int SelectionSort(string *lastNames){
+int BubbleSort(string *lastNames){
     int numberOfComparisons = 0;
-    for(int i = 0 ; i < N - 1; i++){
-        int minIdx = i;
-        for(int j = i + 1 ; j < N ; j++){
-            if(lastNames[minIdx] > lastNames[j]){
-                minIdx = j;
+    bool isSorted = false;
+    int counter = 0;
+    while(!isSorted){
+        isSorted = true;
+        for(int i = 0 ; i < N - 1 - counter ; i++){
+            if(lastNames[i] > lastNames[i+1]){
+                Swap(i, i+1, lastNames);
+                isSorted = false;
             }
-            numberOfComparisons++;
         }
-        Swap(i, minIdx, lastNames);
+        numberOfComparisons++;
     }
     return numberOfComparisons;
 }
@@ -50,18 +52,14 @@ int BinarySearch(string target, string *lastNames, int *noOfComparisons){
 
 int main(){
     string lastNames[N];
-    // string lastName;
-    // for(int i = 0; i < N; i++){
-    //     cin >> lastName;
-    //     lastNames[i] = lastName;
-    // }
+
     lastNames[0] = string("Sugino");
     lastNames[1] = string("London");
     lastNames[2] = string("Dizon");
     lastNames[3] = string("Magtibay");
     lastNames[4] = string("Garcia");
 
-    int numberOfComparisonsInSorting = SelectionSort(lastNames);
+    int numberOfComparisonsInSorting = BubbleSort(lastNames);
 
     cout << "number of comparisons in sorting algorithm: " << numberOfComparisonsInSorting << endl;
 
@@ -72,7 +70,6 @@ int main(){
     int numberOfComparisonsInBinarySearch = 0;
     int idx = BinarySearch(lookFor, lastNames, &numberOfComparisonsInBinarySearch);
     
-
     cout << lookFor << " is in index = " << idx << endl;
     cout << "number of comparisons in binary search: " << numberOfComparisonsInBinarySearch << endl;
 
