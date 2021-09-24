@@ -7,13 +7,11 @@ const int NO_MEMBERS = 3;
 const int SIZE = 30;
 
 //addresses coded
-const char kenji_address[SIZE] = "honmachi";
-const char romeo_address[SIZE] = "";
-const char mark_address[SIZE] = "";
+const char kenji_address[SIZE] = "Caloocan City";
+const char romeo_address[SIZE] = "Quezon City";
+const char mark_address[SIZE] = "Nueva Ecija";
 
-const char kenji_id = "2019-200012";
-const char romeo_id = "";
-const char mark_id = "";
+
 
 struct Group{
     char student_no[SIZE];
@@ -43,15 +41,18 @@ bool isSame(char *c1, const char *c2){
         c1++;
         c2++;
     }
+    if(*c1 != '\0' || *c2 != '\0'){
+        return false;
+    }
     return true;
 }
 
 string getAddress(char *student_no){
-    if(isSame(student_no, kenji_id)){
+    if(isSame(student_no, "2019-200012")){
         return kenji_address;
-    }else if(isSame(student_no, romeo_id)){
+    }else if(isSame(student_no, "2019-200124")){
         return romeo_address;
-    }else if(isSame(student_no, mark_id)){
+    }else if(isSame(student_no, "2019-200122")){
         return mark_address;
     }else{
         return "none";
