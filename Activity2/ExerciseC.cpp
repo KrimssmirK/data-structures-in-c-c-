@@ -7,9 +7,13 @@ const int NO_MEMBERS = 3;
 const int SIZE = 30;
 
 //addresses coded
-const char address1[SIZE] = "honmachi";
-const char address2[SIZE] = "";
-const char address3[SIZE] = "";
+const char kenji_address[SIZE] = "honmachi";
+const char romeo_address[SIZE] = "";
+const char mark_address[SIZE] = "";
+
+const char kenji_id = "2019-200012";
+const char romeo_id = "";
+const char mark_id = "";
 
 struct Group{
     char student_no[SIZE];
@@ -43,12 +47,12 @@ bool isSame(char *c1, const char *c2){
 }
 
 string getAddress(char *student_no){
-    if(isSame(student_no, "2019-200012")){
-        return address1;
-    }else if(isSame(student_no, "2019-XXXXXX")){
-        return address2;
-    }else if(isSame(student_no, "2019-XXXXXX")){
-        return address3;
+    if(isSame(student_no, kenji_id)){
+        return kenji_address;
+    }else if(isSame(student_no, romeo_id)){
+        return romeo_address;
+    }else if(isSame(student_no, mark_id)){
+        return mark_address;
     }else{
         return "none";
     }
@@ -67,8 +71,12 @@ void displayMemberInfo(Group *ptr){
 
 int main(){
     Group *ptr, group1[NO_MEMBERS];
+    //Group *ptr;
+    //Group group1[NO_MEMBERS];
+
     ptr = group1;
     
+
     createGroup(ptr);
 
     displayMemberInfo(ptr);
