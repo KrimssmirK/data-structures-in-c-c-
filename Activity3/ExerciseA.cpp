@@ -15,7 +15,7 @@ class Stack{
         //constructor
         Stack(int l){
             length = l;
-            p_stack = (int*)malloc(length * sizeof(int)); // allocating array in the memory
+            p_stack = (int*)malloc(length * sizeof(int)); // allocating array in the memory(heap)
             idx = -1;
         }
         
@@ -24,9 +24,10 @@ class Stack{
             idx++;
             if(isFull()){
                 length *= 2;
-                p_stack = (int*)realloc(p_stack, length*sizeof(int));
+                p_stack = (int*)realloc(p_stack, length*sizeof(int)); //resize allocation
             }
             *(p_stack + idx) = num;
+            // p_stack[idx] = num; (same meaning)
         }
 
         int pop(){
@@ -40,6 +41,7 @@ class Stack{
 
         int top(){
             return *(p_stack + idx);
+            //p_stack[idx] (same meaning)
         }
 
         int getLength(){
