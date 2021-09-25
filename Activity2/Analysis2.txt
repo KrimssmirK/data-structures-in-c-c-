@@ -1,0 +1,2 @@
+It is because in array of structures, those memories of structures are allocated in chronological order, while declaring structures one by one
+it can be allocated randomly in RAM. With that being said, using array of structures can avoid wasting memories.
