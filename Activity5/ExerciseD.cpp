@@ -1,4 +1,5 @@
 #include <iostream>
+#include "MyQuickSort.h"
 
 using namespace std;
 
@@ -73,7 +74,8 @@ void MergeSort(int *array, int size){
 
 int main(){
     int data[] = {12,11,13,5,6,7};
-    MergeSort(data, sizeof(data)/sizeof(int));
+    // MergeSort(data, sizeof(data)/sizeof(int));
+    QuickSort(data, 0, sizeof(data)/sizeof(int) - 1);
 
     for(int i = 0 ; i < sizeof(data)/sizeof(int); i++){
         cout << data[i] << " ";
