@@ -4,7 +4,7 @@
 using namespace std;
 
 const int NO_OF_QUIZZES = 5;
-const int PASSING_SCORE = 80;
+const int PASSING_SCORE = 800;
 
 double getAverage(double scores[]){
     int total = 0;
