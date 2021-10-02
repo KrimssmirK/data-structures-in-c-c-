@@ -132,12 +132,9 @@ int main(){
 
     while(!queue.isEmpty()){
         int dequeued = queue.deQueue();
-        if(dequeued == searched){
-            queue.deQueue();
-        }else{
+        if(dequeued != searched){
             newQueue.enQueue(dequeued);
         }
-        
     }
 
     cout << "New Queue Content: ";
