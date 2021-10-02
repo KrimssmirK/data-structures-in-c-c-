@@ -1,3 +1,5 @@
+#include <cstdlib>
+
 void Swap(int *A, int i, int j){
     int temp = A[i];
     A[i] = A[j];
