@@ -135,7 +135,7 @@ int main(){
         if(dequeued == searched){
             queue.deQueue();
         }else{
-            newQueue.enQueue(queue.deQueue());
+            newQueue.enQueue(dequeued);
         }
         
     }
