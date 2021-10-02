@@ -1,35 +1,19 @@
 #include <iostream>
-#include <string>
+#include <cstdlib>
+#include <time.h>
 
 using namespace std;
 
-// struct Student{
-//     string name;
-//     int age;
-// };
+
 
 int main(){
-
-    int x = 4;
-    int *ptr;
-    ptr = &x;
-    cout << x << endl;
-    cout << &x << endl;
+    int array[] = {1,2,3,4,5,6,7,8};
+    for(int i = 0 ; i < 8; i++){
+        for(int j = 0 ; j < 8; j++){
+            cout << array[j] << " ";
+        }
+    }
+    cout << endl;
     
-   
-   
-    
-
-    //struct
-    // Student student1;
-    // student1.name = "kenji";
-    // student1.age = 22;
-
-    // cout << student1.name << endl;
-
-    // //array of structure
-    // Student students[5];
-    // students[0].name = "romeo";
-
 
 }

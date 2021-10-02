@@ -114,7 +114,10 @@ int main(){
         if(count == pos){
             queue.deQueue();
         }
-        newQueue.enQueue(queue.deQueue());
+        if(!queue.isEmpty()){
+            newQueue.enQueue(queue.deQueue());
+        }
+        // newQueue.enQueue(queue.deQueue());
         count++;
     }
 
