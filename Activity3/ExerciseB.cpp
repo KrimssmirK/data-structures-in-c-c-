@@ -81,7 +81,16 @@ class Queue{
                     return i + 1;
                 }
             }
+            // int *positions = (int*)malloc(getLength() * sizeof(int));
+            // for(int i = 0 ; i < getLength(); i++){
+            //     positions[i] = *(p_stack + i);
+            // }
+            // return positions
             return -1;
+        }
+
+        int* getArrayOfQueue(){
+            return p_queue;
         }
 };
 
@@ -103,33 +112,45 @@ int main(){
     cout << "Enter a number to be searched: ";
     cin >> searched;
 
-    int pos = queue.getPosition(searched);
     
-    cout << "The position of " << searched << " is " << pos << "." << endl;
+    // int positions[queue.getLength()];
+    // for(int i = 0 ; i < queue.getLength(); i++){
+    //     positions[i] = queue.getPosition(searched);
+    // }
+    int *A = queue.getArrayOfQueue();
+    cout << "The position of " << searched << " is ";
+    for(int i = 0 ; i < queue.getLength(); i++){
+        int currentNumber = A[i];
+        if(currentNumber == searched){
+            cout << i + 1 << " ";
+        }
+    }
+    cout << endl;
+  
 
     Queue newQueue(queue.getLength());
 
-    int count = 1;
     while(!queue.isEmpty()){
-        if(count == pos){
+        int dequeued = queue.deQueue();
+        if(dequeued == searched){
             queue.deQueue();
-        }
-        if(!queue.isEmpty()){
+        }else{
             newQueue.enQueue(queue.deQueue());
         }
-        // newQueue.enQueue(queue.deQueue());
-        count++;
+        
     }
 
     cout << "New Queue Content: ";
+    int count = 0;
     int total = 0;
     while(!newQueue.isEmpty()){
         int dequeued = newQueue.deQueue();
         cout << dequeued << " ";
+        count++;
         total += dequeued;
     }
     cout << endl;
 
-    cout << "AVERAGE: " << (double)total / (count - 1) << endl;
+    cout << "AVERAGE: " << (double)total / count << endl;
     return 0;
 }
