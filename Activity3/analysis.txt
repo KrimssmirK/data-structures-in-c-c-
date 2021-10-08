@@ -1,0 +1,14 @@
+1. What are the advantages of stacks over queues and vice-versa? 
+   Write down 3 practical applications of stacks and queues?
+
+The advantages of stacks over queues is that if you deal with the newest data you have to implement stack over queue.
+However, if you deal with the oldest data you have to implement queue. They depend on the requirements.
+
+stacks
+1. It uses on the allocation of memory like function calls.
+2. Converting infix to postfix expressions.
+3. It uses on backtracking like maze game to track all paths in order to move back.
+
+queues
+1. It uses in the printer to serve data in order. Queue is used to save those requests.
+2. 
