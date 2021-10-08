@@ -15,3 +15,9 @@ queues
     the phone systems to assess people in a line order or what you called FIFO
 3. In handling the interruptions on real-time systems. It uses Queues since the interruptions
    that are happening on the system is handled on the same manner or order.
+
+2. What happens if you fill up all the contents of a queue. Can you still add more values?
+    Yes, it can. It is possible if you have a dynamic queue.
+
+3. Given that the size of a stack is dynamic, can you put an infinite number of data values into a stack?
+    Yes, it can unless you have no capacity of memory.
