@@ -11,4 +11,7 @@ stacks
 
 queues
 1. It uses in the printer to serve data in order. Queue is used to save those requests.
-2. 
+2. For example, in a BPO Company, Call Center. Here, it uses the concept of queues on
+    the phone systems to assess people in a line order or what you called FIFO
+3. In handling the interruptions on real-time systems. It uses Queues since the interruptions
+   that are happening on the system is handled on the same manner or order.
