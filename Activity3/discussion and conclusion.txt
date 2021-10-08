@@ -1,3 +1,8 @@
 discussion
 
-bluh bluh
+So we employed on memory allocation like function calls to accomplish our goal. The infix and postfix expressions are also covered. Then, similar to a maze game, we employ backtracking to track all paths in order to return. It is used in the printer to supply data in a sequential manner. Those requests are saved in a queue. For instance, a Call Center in a BPO company. It employs the concept of phone queues to assess people in line order, or what is known as FIFO. In dealing with real-time system outages. It employs queues because all system disturbances are handled in the same manner and in the same order. If you have a dynamic queue, you can still add extra values. In a stack, you can store an endless amount of data values. If you don't have any memory capacity.
+
+
+Conclusion 
+
+The benefit of stacks over queues is that you must choose stacks over queues if you need to deal with the most recent data. If you're working with the oldest data, though, you'll need to use a queue. They are determined by the needs.
