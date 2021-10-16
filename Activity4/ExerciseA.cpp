@@ -10,25 +10,32 @@ struct Node{
 class SinglyLinkedList{
     private:
         Node *head;
+        Node *tail;
 
     public:
 
         SinglyLinkedList(){
             head = NULL;
+            tail = NULL;
         }
+
+        //O(1) time | O(1) space Big O notation
         void insert_to_end(int value){
-            Node *temp = (Node*)malloc(sizeof(Node));
-            temp->value = value;
-            temp->next = NULL;
-            Node *current = head;
+            Node *newNode = (Node*)malloc(sizeof(Node)); // creating new node to insert
+            newNode->value = value; // initializing value to the new node
+            newNode->next = NULL;
+            Node *current = tail; // ptr pointing the end node of the linked list
             if(isEmpty()){
-                head = temp;
+                head = newNode;
+                tail = newNode;
                 return;
             }else{
-                while(current->next != 0){
-                    current = current->next;
-                }
-                current->next = temp;
+                //traversing
+                // while(current->next != 0){
+                //     current = current->next;
+                // }
+                current->next = newNode;
+                tail = current->next; // updating the new tail
             }
         }
 
@@ -67,18 +74,18 @@ class SinglyLinkedList{
             return head;
         }
 
-        bool has_cycle() {
-            Node* skip1 = head;
-            Node* skip2 = head;
-            while(skip1->next != NULL && skip2->next->next != NULL){
-                skip1 = skip1->next;
-                skip2 = skip2->next->next;
-                if(skip1 == skip2){
-                    return true;
-                }
-            }
-            return false;
-        }
+        // bool has_cycle() {
+        //     Node* skip1 = head;
+        //     Node* skip2 = head;
+        //     while(skip1->next != NULL && skip2->next->next != NULL){
+        //         skip1 = skip1->next;
+        //         skip2 = skip2->next->next;
+        //         if(skip1 == skip2){
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
 };
 
 
@@ -101,7 +108,7 @@ int main(){
         }
     }
 
-    cout << "cycle: " << list.has_cycle() << endl; //test
+    // cout << "cycle: " << list.has_cycle() << endl; //test
 
 
     cout << "Linked List contains: ";
