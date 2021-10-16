@@ -66,7 +66,22 @@ class SinglyLinkedList{
         Node* getHead(){
             return head;
         }
+
+        bool has_cycle() {
+            Node* skip1 = head;
+            Node* skip2 = head;
+            while(skip1->next != NULL && skip2->next->next != NULL){
+                skip1 = skip1->next;
+                skip2 = skip2->next->next;
+                if(skip1 == skip2){
+                    return true;
+                }
+            }
+            return false;
+        }
 };
+
+
 
 int main(){
     SinglyLinkedList list;
@@ -85,6 +100,8 @@ int main(){
             list.insert_to_front(input);
         }
     }
+
+    cout << "cycle: " << list.has_cycle() << endl; //test
 
 
     cout << "Linked List contains: ";
