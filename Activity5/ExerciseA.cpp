@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 
-//number of inputs
 const int N = 5;
 
 using namespace std;
@@ -50,12 +49,8 @@ int BinarySearch(string target, string *lastNames, int *noOfComparisons){
 
 int main(){
     string lastNames[N];
-    // string lastName;
-    // for(int i = 0; i < N; i++){
-    //     cin >> lastName;
-    //     lastNames[i] = lastName;
-    // }
-    lastNames[0] = string("Sugino");
+  
+    lastNames[0] = string("sugino");
     lastNames[1] = string("London");
     lastNames[2] = string("Dizon");
     lastNames[3] = string("Magtibay");
@@ -71,7 +66,6 @@ int main(){
 
     int numberOfComparisonsInBinarySearch = 0;
     int idx = BinarySearch(lookFor, lastNames, &numberOfComparisonsInBinarySearch);
-    
 
     cout << lookFor << " is in index = " << idx << endl;
     cout << "number of comparisons in binary search: " << numberOfComparisonsInBinarySearch << endl;
