@@ -45,7 +45,9 @@
         "stdexcept": "cpp",
         "streambuf": "cpp",
         "typeinfo": "cpp",
-        "__tuple": "cpp"
+        "__tuple": "cpp",
+        "__functional_03": "cpp",
+        "stack": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

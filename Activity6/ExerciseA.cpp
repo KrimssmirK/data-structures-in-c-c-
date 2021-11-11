@@ -1,6 +1,7 @@
 // library used
 #include <iostream>
 #include <string>
+#include <stack>
 
 // namespace used
 using namespace std;
@@ -11,50 +12,57 @@ const int POSTFIX = 2;
 const int INFIX = 3;
 
 //my functions
-int GetId(string expression);
-void Prefix();
-void Postfix();
-void Infix();
+int GetId(string notation);
+int Prefix(string exp);
+int Postfix(string exp);
+int Infix(string exp);
+bool isOperator(char op);
+int Perform(char op, int operand1, int operand2);
+
 
 
 int main(){
+    int answer = 0;
     bool isWrongExpression;
     do{
         isWrongExpression = false;
-        cout << "Enter a notation:";
+        cout << "Enter a notation: ";
+        string notation;
+        getline(cin, notation);
+        cout << "Enter the expression: ";
         string expression;
-        cin >> expression;
-        switch(GetId(expression)){
+        getline(cin, expression);
+        switch(GetId(notation)){
             case PREFIX:
-                Prefix();
+                answer = Prefix(expression);
                 break;
             case POSTFIX:
-                Postfix();
+                answer = Postfix(expression);
                 break;
             case INFIX:
-                Infix();
+                answer = Infix(expression);
                 break;
             default:
                 cout << "wrong expression\t TRY AGAIN!" << endl;
                 isWrongExpression = true;
         }
     }while(isWrongExpression);
-    
+    cout << "Answer: " << answer << endl;
     return 0;
 }
 
-int GetId(string expression){
+int GetId(string notation){
     // change all string's case in upper case
-    for(int i = 0; i < expression.length(); i++){
-        expression[i] = toupper(expression[i]);
+    for(int i = 0; i < notation.length(); i++){
+        notation[i] = toupper(notation[i]);
     }
     //////////////////////////////////////////
 
-    if(expression.compare("PREFIX") == 0){
+    if(notation.compare("PREFIX") == 0){
         return PREFIX;
-    }else if(expression.compare("POSTFIX") == 0){
+    }else if(notation.compare("POSTFIX") == 0){
         return POSTFIX;
-    }else if(expression.compare("INFIX") == 0){
+    }else if(notation.compare("INFIX") == 0){
         return INFIX;
     }
     return 0;
@@ -62,12 +70,46 @@ int GetId(string expression){
 
 
 // solutions
-void Prefix(){
+int Prefix(string exp){
     cout << "calculating in prefix mode..." << endl;
+    return 0;
 }
-void Postfix(){
-    cout << "calculating in postfix mode..." << endl;
+int Postfix(string exp){
+    stack<int> stack;
+    for(int i = 0; i < exp.length(); i++){
+        if(isOperator(exp[i])){
+            int op2 = stack.top(); stack.pop();
+            int op1 = stack.top(); stack.pop();
+            int res = Perform(exp[i], op1, op2);
+            stack.push(res);
+            i++; // to prevent space error in Line 92
+        }else{
+            string numString = "";
+            while(exp[i] != ' '){
+                numString = numString + exp[i++];  
+            }
+            cout << "numString=" << numString << endl;
+            stack.push(stoi(numString));  
+        }
+    }
+    return stack.top();
 }
-void Infix(){
+int Perform(char op, int operand1, int operand2){
+    if(op == '+'){
+        return operand1 + operand2;
+    }else if(op == '-'){
+        return operand1 - operand2;
+    }else if(op == '*'){
+        return operand1 * operand2;
+    }else if(op == '/'){
+        return operand1 / operand2;
+    }
+    return 0;
+}
+bool isOperator(char op){
+    return op == '+' || op == '-' || op == '*' || op == '/';
+}
+int Infix(string exp){
     cout << "calculating in Infix mode..." << endl;
+    return 0;
 }
