@@ -71,7 +71,24 @@ int GetId(string notation){
 
 // solutions
 int Prefix(string exp){
-    cout << "calculating in prefix mode..." << endl;
+    stack<int> stack;
+    for(int i = exp.length() - 1; i >= 0; i--){
+        if(isOperator(exp[i])){
+            int op1 = stack.top(); stack.pop();
+            int op2 = stack.top(); stack.pop();
+            int res = Perform(exp[i], op1, op2);
+            stack.push(res);
+            i--;
+        }else{
+            string numString = "";
+            while(exp[i] != ' '){
+                numString = exp[i--] + numString;
+            }
+            cout << numString << endl; //test
+            stack.push(stoi(numString));
+        }
+    }
+    return stack.top();
     return 0;
 }
 int Postfix(string exp){
