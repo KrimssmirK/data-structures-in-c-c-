@@ -17,7 +17,12 @@ int Prefix(string exp);
 int Postfix(string exp);
 int Infix(string exp);
 bool isOperator(char op);
+bool isOperand(char c);
 int Perform(char op, int operand1, int operand2);
+string InfixToPostfix(string exp);
+bool hasGreaterPrecedence(char c1, char c2);
+bool isClosingParanthesis(char c);
+bool isOpeningParanthesis(char c);
 
 
 
@@ -105,7 +110,6 @@ int Postfix(string exp){
             while(exp[i] != ' '){
                 numString = numString + exp[i++];  
             }
-            cout << "numString=" << numString << endl;
             stack.push(stoi(numString));  
         }
     }
@@ -127,6 +131,61 @@ bool isOperator(char op){
     return op == '+' || op == '-' || op == '*' || op == '/';
 }
 int Infix(string exp){
-    cout << "calculating in Infix mode..." << endl;
-    return 0;
+    string res = InfixToPostfix(exp);
+    return Postfix(res);
+}
+
+bool isOperand(char c){
+    return c != '+' && c != '-' && c != '*' && c != '/' && c != '(' && c != ')';
+}
+
+bool isOpeningParanthesis(char c){
+    return c == '(';
+}
+
+bool isClosingParanthesis(char c){
+    return c == ')';
+}
+
+bool hasGreaterPrecedence(char c1, char c2){
+    if(c1 == '*' || c1 == '/'){
+        return c2 == '+' || c2 == '-';
+    }
+    if(c1 == '+' || c1 == '-'){
+        return c2 == '+' || c2 == '-';
+    }
+    return false;
+}
+
+string InfixToPostfix(string exp){
+    string res = "";
+    stack<char> stack;
+    for(int i = 0; i < exp.length(); i++){
+        if(isOperand(exp[i])){
+            res = res + exp[i];
+        }else if(isOperator(exp[i])){
+            bool flag;
+            while( (flag = !stack.empty() && hasGreaterPrecedence(stack.top(), exp[i]) && !isClosingParanthesis(stack.top())) ){
+                res = res + ' ' + stack.top();
+                stack.pop();
+            }
+            if(!flag){
+                res = res + ' ';
+            }
+            stack.push(exp[i]);
+        }else if(isOpeningParanthesis(exp[i])){
+            stack.push(exp[i]);
+        }else if(isClosingParanthesis(exp[i])){
+            while(!stack.empty() && !isOpeningParanthesis(stack.top())){
+                res = res + ' ' + stack.top();
+                stack.pop();
+            }
+            stack.pop();
+        }
+    }
+    while(!stack.empty()){
+        res = res + ' ' + stack.top();
+        stack.pop();
+    }
+    return res;
 }
