@@ -28,9 +28,9 @@ bool isOpeningParanthesis(char c);
 
 int main(){
     int answer = 0;
-    bool isWrongExpression;
+    bool isWrongNotation;
     do{
-        isWrongExpression = false;
+        isWrongNotation = false;
         cout << "Enter a notation: ";
         string notation;
         getline(cin, notation);
@@ -48,10 +48,10 @@ int main(){
                 answer = Infix(expression);
                 break;
             default:
-                cout << "wrong expression\t TRY AGAIN!" << endl;
-                isWrongExpression = true;
+                cout << "wrong notation\t TRY AGAIN!" << endl;
+                isWrongNotation = true;
         }
-    }while(isWrongExpression);
+    }while(isWrongNotation);
     cout << "Answer: " << answer << endl;
     return 0;
 }
@@ -89,7 +89,6 @@ int Prefix(string exp){
             while(exp[i] != ' '){
                 numString = exp[i--] + numString;
             }
-            cout << numString << endl; //test
             stack.push(stoi(numString));
         }
     }
@@ -136,7 +135,13 @@ int Infix(string exp){
 }
 
 bool isOperand(char c){
-    return c != '+' && c != '-' && c != '*' && c != '/' && c != '(' && c != ')';
+    char nums[] = {'0','1','2','3','4','5','6','7','8','9'};
+    for(int i = 0; i < sizeof(nums)/sizeof(char); i++){
+        if(c == nums[i]){
+            return true;
+        } 
+    }
+    return false;
 }
 
 bool isOpeningParanthesis(char c){
